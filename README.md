@@ -1,6 +1,6 @@
 # YuQi0704.github.io
 
-基于 Jekyll + GitHub Pages 的个人博客，视觉风格参考 tw93.fun：米白背景、今楷字体、白色圆角卡片，文章页下方带自动生成的 Recent Posts。
+基于 Jekyll + GitHub Pages 的个人博客：白纸、细线、宽留白，首页是「日期 + 标题 + 摘要」的编辑式列表，右侧是自动生成的 Recent Posts。
 
 ## 目录结构
 
@@ -8,16 +8,14 @@
 .
 ├── _config.yml            # 站点配置（标题、描述、作者）
 ├── _layouts/
-│   ├── default.html       # 全站布局（顶栏 + 深色横幅 + 正文 + 页脚）
-│   ├── post.html          # 文章页布局（含 Recent Posts 卡片）
+│   ├── default.html       # 全站布局（顶栏 + 双栏正文 + 页脚）
+│   ├── post.html          # 文章页布局
 │   └── page.html          # 关于 / 404 等普通页布局
 ├── _includes/
-│   └── sidebar.html       # Recent Posts 卡片
+│   └── sidebar.html       # Recent Posts + 关于本站
 ├── _posts/                # 文章：YYYY-MM-DD-标题.md
-├── assets/css/
-│   ├── font.css           # 仓耳今楷字体（tw93 同款，支付宝 CDN）
-│   └── style.css          # 样式（含标题省略号）
-├── index.html             # 首页文章卡片列表
+├── assets/css/style.css   # 全部样式（含标题省略号、深色模式）
+├── index.html             # 首页文章列表
 ├── about.md               # 关于页
 └── 404.html
 ```
@@ -60,18 +58,14 @@ categories: [随笔]
 正文……
 ```
 
-提交并推送后自动构建，文章页下方的 Recent Posts 卡片会自动更新（取最新 6 篇）。
+提交并推送后自动构建，侧边栏的 Recent Posts 会自动更新（取最新 6 篇）。
 
-## 修改 Recent Posts 卡片
+## 修改 Recent Posts
 
 - 显示数量：`_includes/sidebar.html` 里的 `limit:6`。
 - 标题截断：`assets/css/style.css` 里的 `.recent-posts a`（`text-overflow: ellipsis`）。
 - 站点标题 / 描述：`_config.yml`。
-
-## 换横幅文字 / 字体
-
-- 横幅「见字如面」在 `_layouts/default.html` 的 `<text class="banner-text">` 里改。
-- 字体 `assets/css/font.css` 用的是 tw93 同款仓耳今楷（支付宝 CDN），断网或 CDN 不可用时会回退到系统楷体。
+- 样式引用带构建时间戳 `?v=...`，每次构建自动更新，避免浏览器拿着旧 CSS 渲染新页面。
 
 ## 本地预览（可选）
 

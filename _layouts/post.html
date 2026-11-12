@@ -1,30 +1,29 @@
 ---
 layout: default
 ---
-<div class="post-shell">
-  <article class="hentry post-card">
-    <div class="entry-content">
-      <h1 class="post-title entry-title">{{ page.title }}</h1>
-      <h4 class="page-info">
-        <span>创作</span>
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-        {% if page.categories.size > 0 %}<span class="page-cats">· {{ page.categories | join: " / " }}</span>{% endif %}
-      </h4>
-
-      {{ content }}
-    </div>
-
-    <nav class="post-nav">
-      {% if page.previous %}
-        <a class="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
-      {% else %}
-        <span></span>
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      {% if page.categories.size > 0 %}
+        <span class="sep">/</span><span class="post-cats">{{ page.categories | join: " / " }}</span>
       {% endif %}
-      {% if page.next %}
-        <a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
-      {% endif %}
-    </nav>
-  </article>
+    </p>
+  </header>
 
-  {% include sidebar.html %}
-</div>
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <nav class="post-nav">
+    {% if page.previous %}
+      <a class="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if page.next %}
+      <a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+    {% endif %}
+  </nav>
+</article>
