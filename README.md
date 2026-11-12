@@ -60,13 +60,18 @@ categories: [随笔]
 正文……
 ```
 
-提交并推送后自动构建，侧边栏 Recent Posts 会自动更新（取最新 6 篇）。
+提交并推送后自动构建，文章页下方的 Recent Posts 卡片会自动更新（取最新 6 篇）。
 
-## 修改侧边栏
+## 修改 Recent Posts 卡片
 
 - 显示数量：`_includes/sidebar.html` 里的 `limit:6`。
 - 标题截断：`assets/css/style.css` 里的 `.recent-posts a`（`text-overflow: ellipsis`）。
 - 站点标题 / 描述：`_config.yml`。
+
+## 换横幅文字 / 字体
+
+- 横幅「见字如面」在 `_layouts/default.html` 的 `<text class="banner-text">` 里改。
+- 字体 `assets/css/font.css` 用的是 tw93 同款仓耳今楷（支付宝 CDN），断网或 CDN 不可用时会回退到系统楷体。
 
 ## 本地预览（可选）
 
