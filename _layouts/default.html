@@ -2,33 +2,53 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ed">
   {% seo %}
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+  <link rel="stylesheet" href="{{ '/assets/css/font.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   {% feed_meta %}
 </head>
-<body>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}">首页</a>
-        <a href="{{ '/about/' | relative_url }}">关于</a>
-        <a href="https://github.com/YuQi0704" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-    </div>
-  </header>
+<body id="{% if page.layout == 'post' %}post{% elsif page.url == '/' %}post-index{% else %}page{% endif %}">
 
-  <div class="wrap layout">
-    <main class="content">
-      {{ content }}
-    </main>
-    {% include sidebar.html %}
+  <div class="header-menu" id="J_header">
+    <ul class="header-item-container">
+      <li class="header-item-title">
+        <a href="{{ '/' | relative_url }}" class="title">{{ site.author }}</a>
+      </li>
+      <li class="header-item-left{% if page.url == '/' %} active{% endif %}">
+        <a href="{{ '/' | relative_url }}">博客</a>
+      </li>
+      <li class="header-item-left{% if page.url == '/about/' %} active{% endif %}">
+        <a href="{{ '/about/' | relative_url }}">关于</a>
+      </li>
+      <li class="header-item header-social">
+        <a href="https://github.com/YuQi0704" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.43 2.86 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-1.03-.01-1.86-2.51.46-3.16-.61-3.36-1.17-.11-.29-.6-1.17-1.03-1.41-.35-.19-.85-.65-.01-.66.79-.01 1.35.72 1.54 1.02.9 1.51 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.23-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.26 2.75 1.03.8-.22 1.65-.34 2.5-.34s1.7.11 2.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.91.68 1.85 0 1.34-.01 2.41-.01 2.75 0 .26.19.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+        </a>
+      </li>
+    </ul>
   </div>
 
-  <footer class="site-footer wrap">
-    © {{ site.time | date: "%Y" }} {{ site.author }} · Powered by Jekyll &amp; GitHub Pages
-  </footer>
+  <div class="entry-header" aria-hidden="true">
+    <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img" aria-label="见字如面">
+      <text class="banner-text" font-size="42" font-weight="400" fill="#f3ebdb" x="50%" y="55%" text-anchor="middle" letter-spacing="4">见字如面</text>
+    </svg>
+  </div>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <div class="footer-wrapper">
+    <footer role="contentinfo">
+      <a href="https://github.com/YuQi0704" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.43 2.86 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-1.03-.01-1.86-2.51.46-3.16-.61-3.36-1.17-.11-.29-.6-1.17-1.03-1.41-.35-.19-.85-.65-.01-.66.79-.01 1.35.72 1.54 1.02.9 1.51 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.23-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.26 2.75 1.03.8-.22 1.65-.34 2.5-.34s1.7.11 2.5.34c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.91.68 1.85 0 1.34-.01 2.41-.01 2.75 0 .26.19.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+      </a>
+      <p class="copyright">© {{ site.time | date: "%Y" }} {{ site.author }} · 由 Jekyll 与 GitHub Pages 驱动</p>
+    </footer>
+  </div>
+
 </body>
 </html>

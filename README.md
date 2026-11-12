@@ -1,6 +1,6 @@
 # YuQi0704.github.io
 
-基于 Jekyll + GitHub Pages 的个人博客，侧边栏带自动生成的 Recent Posts。
+基于 Jekyll + GitHub Pages 的个人博客，视觉风格参考 tw93.fun：米白背景、今楷字体、白色圆角卡片，文章页下方带自动生成的 Recent Posts。
 
 ## 目录结构
 
@@ -8,13 +8,16 @@
 .
 ├── _config.yml            # 站点配置（标题、描述、作者）
 ├── _layouts/
-│   ├── default.html       # 全站布局（顶栏 + 正文 + 侧边栏）
-│   └── post.html          # 文章页布局
+│   ├── default.html       # 全站布局（顶栏 + 深色横幅 + 正文 + 页脚）
+│   ├── post.html          # 文章页布局（含 Recent Posts 卡片）
+│   └── page.html          # 关于 / 404 等普通页布局
 ├── _includes/
-│   └── sidebar.html       # Recent Posts 侧边栏
+│   └── sidebar.html       # Recent Posts 卡片
 ├── _posts/                # 文章：YYYY-MM-DD-标题.md
-├── assets/css/style.css   # 样式（含标题省略号）
-├── index.html             # 首页文章列表
+├── assets/css/
+│   ├── font.css           # 仓耳今楷字体（tw93 同款，支付宝 CDN）
+│   └── style.css          # 样式（含标题省略号）
+├── index.html             # 首页文章卡片列表
 ├── about.md               # 关于页
 └── 404.html
 ```

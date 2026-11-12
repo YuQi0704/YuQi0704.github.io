@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: 关于
 permalink: /about/
 ---
@@ -12,7 +12,7 @@ permalink: /about/
 
 - 建于 2026 年 11 月
 - 使用 [Jekyll](https://jekyllrb.com/) 构建，托管在 [GitHub Pages](https://pages.github.com/)
-- 侧边栏的 Recent Posts 会在每次构建时自动读取所有文章，按发布日期倒序取前 6 篇
+- 文章页下方的 Recent Posts 卡片会在每次构建时自动读取所有文章，按发布日期倒序取前 6 篇
 
 ## 找到我
 

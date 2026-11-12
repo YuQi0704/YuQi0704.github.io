@@ -2,20 +2,19 @@
 layout: default
 title: 首页
 ---
-<section class="home">
-  <h1 class="page-title">最新文章</h1>
+<h1 class="visually-hidden">{{ site.title }}</h1>
 
-  {% if site.posts.size == 0 %}
-    <p class="muted">还没有文章。在 <code>_posts/</code> 里添加一个 Markdown 文件即可。</p>
-  {% endif %}
+{% if site.posts.size == 0 %}
+  <article class="hentry empty-card">
+    <div class="entry-summary">还没有文章。在 <code>_posts/</code> 里添加一个 Markdown 文件即可。</div>
+  </article>
+{% endif %}
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-    <li>
-      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <p class="post-excerpt">{{ post.excerpt | strip_html | strip | truncate: 90 }}</p>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
+{% for post in site.posts %}
+<a class="card-link" href="{{ post.url | relative_url }}" rel="bookmark" title="{{ post.title | escape }}">
+  <article class="hentry">
+    <h2 class="entry-title">{{ post.title }}</h2>
+    <div class="entry-summary"><span>【{{ post.date | date: "%Y-%m-%d" }}】</span>{{ post.excerpt | strip_html | strip | truncate: 140 }}</div>
+  </article>
+</a>
+{% endfor %}
