@@ -1,0 +1,40 @@
+# 站点基本信息（改成你自己的即可）
+title: YuQi 的博客
+description: 记录学习、代码与生活。
+author: YuQi
+url: "https://yuqi0704.github.io"
+baseurl: ""
+
+# 时区与编码
+timezone: Asia/Shanghai
+encoding: utf-8
+
+# 构建
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+future: false
+
+# GitHub Pages 官方白名单插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 默认布局
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
